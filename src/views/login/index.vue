@@ -1,6 +1,6 @@
 <script setup lang="ts">
   import { useSettingStore } from '@/stores/index';
-  import { login } from '@/api/login';
+  import { login } from '@/api/cockpit';
   import { setUserInfo, setToken } from '@/utils';
   import { useMessage } from '@/hooks/useMessage';
 

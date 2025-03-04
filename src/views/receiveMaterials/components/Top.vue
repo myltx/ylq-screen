@@ -1,6 +1,12 @@
 <script setup lang="ts">
   import { LeftCircleOutlined, RightCircleOutlined } from '@ant-design/icons-vue';
-  const alarmList = ref([]);
+  const alarmList = ref([
+    {
+      content: '混凝土',
+      date: 'C30',
+      num: 10,
+    },
+  ]);
 
   const onChange = (current: number) => {
     console.log(current);
@@ -11,12 +17,8 @@
     <div class="w-900px">
       <BasicBox title="进场材料">
         <AutoScrollTable
+          show-index
           :headers="[
-            {
-              key: 'index',
-              title: '#',
-              style: {},
-            },
             {
               key: 'content',
               title: '材料名称',
@@ -44,6 +46,7 @@
       <BasicBox title="进场影像">
         <a-carousel
           arrows
+          autoplay
           :after-change="onChange"
           class="bg-#2D67AF w-100% px-20px pb-20px carousel-bg"
         >

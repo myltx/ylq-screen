@@ -1,5 +1,5 @@
 import { removeLocalStorage } from '@/utils';
-import { TIMEOUT, OTHER, NOLOGIN } from './error-code';
+import { TIMEOUT, OTHER, NOLOGIN, SUCCESS_CODE } from './error-code';
 import { useMessage } from '@/hooks/useMessage';
 import { Modal } from 'ant-design-vue';
 import { LOGIN_PATH } from '@/helper';
@@ -15,7 +15,7 @@ export function handleSuccess(res: any, resolve: Function, opts?: any) {
   if (NOLOGIN.includes(data.code)) {
     loginOut(data.msg);
   } else {
-    if (data.code !== 200) {
+    if (!SUCCESS_CODE.includes(data.code || data.errcode)) {
       const msg = data.msg || data.message;
       createMessage.warn(msg);
     }

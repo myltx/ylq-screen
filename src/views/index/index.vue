@@ -1,13 +1,13 @@
 <script setup lang="ts">
   import { useLoadingStore } from '@/stores/loading';
   import { getUserInfo } from '@/utils';
-  import Top from './components/Top.vue';
   import ReceiveMaterials from '../receiveMaterials/index.vue';
 
   const { isLoading } = storeToRefs(useLoadingStore());
   const userInfo = getUserInfo();
   const activeIndex = ref(0);
   console.log(userInfo);
+
   const handleNav = (index: number) => {
     activeIndex.value = index;
   };

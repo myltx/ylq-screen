@@ -6,4 +6,6 @@ export enum ServicePrefixEnum {
   SERVICE = '',
   USER = '/user',
   OAUTH = '/oauth',
+  IOTManagement = '/iotManagement',
+  YLQApi = '/YLQApi',
 }

@@ -20,10 +20,26 @@
     scrollAuto: boolean;
     height?: string | number;
     classOptions: Object;
+    showIndex?: boolean;
   }
   const props = withDefaults(defineProps<Props>(), {
     scrollAuto: true,
   });
+  const headers = ref<Headers[]>(props.headers);
+  watchEffect(() => {
+    headers.value = props.headers;
+    if (props.showIndex) {
+      headers.value.unshift({
+        key: 'sort_index',
+        style: {},
+        title: '#',
+      });
+      props.rows.forEach((item, index) => {
+        item.sort_index = index + 1 + '';
+      });
+    }
+  });
+
   const defaultClassOption = Object.assign(
     {
       limitMoveNum: 6,
@@ -43,11 +59,11 @@
   >
     <div
       class="w-100% flex thead py-6px px-16px color-#4EA4FF text-18px font-500"
-      v-if="props.headers.length"
+      v-if="headers.length"
     >
       <div
         class="flex-1"
-        v-for="th in props.headers.filter((item) => item.key !== 'id')"
+        v-for="th in headers.filter((item) => item.key !== 'id')"
         :key="th?.key"
         :style="{
           ...(th.style ? th?.style : {}),
