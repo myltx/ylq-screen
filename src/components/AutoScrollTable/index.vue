@@ -42,7 +42,7 @@
     ref="tableContainer"
   >
     <div
-      class="w-100% flex thead py-6px px-16px color-#4EA4FF text-12px font-500 h-28px"
+      class="w-100% flex thead py-6px px-16px color-#4EA4FF text-18px font-500"
       v-if="props.headers.length"
     >
       <div
