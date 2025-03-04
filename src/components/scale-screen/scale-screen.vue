@@ -236,3 +236,7 @@
     // state.observer?.disconnect();
   });
 </script>
+
+<style scoped lang="scss">
+  @import './index';
+</style>

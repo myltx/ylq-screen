@@ -29,44 +29,23 @@
       default: false,
     },
   });
-  const { title, showBack } = toRaw(props);
+  const { title } = toRaw(props);
   const time = ref(getDate('HH:mm:ss'));
   setInterval(() => {
     time.value = getDate('HH:mm:ss');
   }, 1000);
-  function goBack() {
-    router.go(-1);
-  }
 </script>
 <template>
   <div class="header-container">
-    <div class="title"> {{ title }} </div>
-    <a-space class="other">
-      <div
-        class="text-white p-5px cursor-pointer rounded-5px font-bold go-back"
-        v-if="showBack"
-        @click="goBack"
-      >
-        运营侧
-      </div>
-      <!-- <div class="date">{{ getDate() }}</div> -->
-      <div class="time">{{ time }}</div>
-      <a-avatar size="large">
-        <img :src="avatarImg" alt="" class="avatar" />
-      </a-avatar>
-      <SettingOutlined
-        :style="{
-          color: '#fff',
-          fontSize: '20px',
-          cursor: 'pointer',
-          marginBottom: '5px',
-        }"
-        @click="setSettingShow(true)"
-        v-if="showSetting"
-      />
-    </a-space>
+    <div class="flex-1">
+      <slot name="left"></slot>
+    </div>
+    <div class="title text-center flex-1"> {{ title }} </div>
+    <div class="flex-1 flex items-center justify-end">
+      <slot name="right"></slot>
+      <!-- <div class="color-#eee text-20px">退出登录</div> -->
+    </div>
   </div>
-  <div class="footer-container"></div>
 </template>
 
 <style scoped lang="scss">

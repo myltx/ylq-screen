@@ -32,12 +32,14 @@
     :wrapperStyle="wrapperStyle"
     :autoScale="isScale"
   >
-    <BasicHeader
-      v-bind="$attrs"
-      v-if="showHeader"
-      :showSetting="showSetting"
-      :showBack="showBack"
-    />
+    <BasicHeader v-bind="$attrs" v-if="showHeader" :showSetting="showSetting" :showBack="showBack">
+      <template #left>
+        <slot name="header-left"></slot>
+      </template>
+      <template #right>
+        <slot name="header-right"></slot>
+      </template>
+    </BasicHeader>
     <slot></slot>
   </ScaleScreen>
   <Setting />
