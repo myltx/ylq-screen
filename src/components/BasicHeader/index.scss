@@ -1,0 +1,90 @@
+@import '@/styles/common.scss';
+
+.header-container {
+  position: absolute;
+  top: 0;
+  z-index: 9999;
+  height: 72px;
+  width: 100%;
+  background: url('@/assets/images/header/header-bg.png') no-repeat;
+  background-size: 100% 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 37px;
+  .title {
+    font-family: PangMenZhengDao, PangMenZhengDao;
+    font-weight: normal;
+    font-size: 34px;
+    color: #ffffff;
+    line-height: 39px;
+    letter-spacing: 2px;
+    text-shadow:
+      0px 2px 21px rgba(146, 212, 255, 0.5),
+      inset 0px 1px 2px rgba(255, 255, 255, 0.5);
+    text-align: right;
+    font-style: normal;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-top: -5px;
+    background-image: -webkit-linear-gradient(bottom, #acecff, #fff);
+  }
+  .other {
+    margin-top: -10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    .go-back {
+      width: 88px;
+      height: 32px;
+      background: url('@/assets/images/header/go-back-bg.png') no-repeat;
+      background-size: 100% 100%;
+      display: flex;
+      align-items: center;
+      text-indent: 13px;
+    }
+    .date {
+      font-family: PangMenZhengDao, PangMenZhengDao;
+      font-weight: normal;
+      font-size: 12px;
+      color: #ffffff;
+      line-height: 14px;
+      letter-spacing: 2px;
+      text-align: right;
+      font-style: normal;
+    }
+    .time {
+      margin: -5px 30px 0 36px;
+      font-family: PangMenZhengDao, PangMenZhengDao;
+      font-weight: normal;
+      font-size: 24px;
+      color: #c4e8ff;
+      line-height: 27px;
+      letter-spacing: 2px;
+      text-shadow: 0px 2px 7px rgba(163, 238, 255, 0.35);
+      text-align: right;
+      font-style: normal;
+    }
+    .avatar {
+      width: 32px !important;
+      height: 32px;
+      max-width: 32px !important;
+      border-radius: 50%;
+      cursor: pointer;
+      // display: inline-block !important;
+    }
+    .ant-avatar {
+      background: rgba(0, 0, 0, 0) !important;
+    }
+  }
+}
+.footer-container {
+  position: absolute;
+  bottom: 10px;
+  z-index: 9999;
+  height: 10px;
+  width: 100%;
+  background: url('@/assets/images/header/footer-bg.png') no-repeat;
+  background-size: 100% 100%;
+}
