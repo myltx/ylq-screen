@@ -5,20 +5,48 @@
 
   const { isLoading } = storeToRefs(useLoadingStore());
   const userInfo = getUserInfo();
+  const activeIndex = ref(0);
   console.log(userInfo);
+  const handleNav = (index: number) => {
+    activeIndex.value = index;
+  };
 </script>
 <template>
   <PageWrapper :title="userInfo?.companyName">
     <template #header-left>
       <div class="flex items-center justify-between w-80% mt-28px">
-        <div class="nav w-181px h-52px active"> 收料 </div>
-        <div class="nav w-181px h-52px"> 收料 </div>
+        <div
+          class="nav w-181px h-52px"
+          :class="{ active: activeIndex === 0 }"
+          @click="handleNav(0)"
+        >
+          收料
+        </div>
+        <div
+          class="nav w-181px h-52px"
+          :class="{ active: activeIndex === 1 }"
+          @click="handleNav(1)"
+        >
+          仓储
+        </div>
       </div>
     </template>
     <template #header-right>
       <div class="flex items-center justify-between w-80% mt-28px">
-        <div class="nav w-181px h-52px active"> 收料 </div>
-        <div class="nav w-181px h-52px"> 收料 </div>
+        <div
+          class="nav w-181px h-52px"
+          :class="{ active: activeIndex === 2 }"
+          @click="handleNav(2)"
+        >
+          配料
+        </div>
+        <div
+          class="nav w-181px h-52px"
+          :class="{ active: activeIndex === 3 }"
+          @click="handleNav(3)"
+        >
+          生产
+        </div>
         <!-- <div class="color-#eee text-20px">退出登录</div> -->
       </div>
     </template>
@@ -42,6 +70,10 @@
     &.active {
       color: rgba(255, 255, 255, 1);
       font-weight: bold;
+      background: url('@/assets/images/index/nav_active.png') no-repeat;
+      background-size: 100% 100%;
+    }
+    &:hover {
       background: url('@/assets/images/index/nav_active.png') no-repeat;
       background-size: 100% 100%;
     }
