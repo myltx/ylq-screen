@@ -15,11 +15,9 @@ export function handleSuccess(res: any, resolve: Function, opts?: any) {
   if (NOLOGIN.includes(data.code)) {
     loginOut(data.msg);
   } else {
-    const msg = data.msg || data.message;
-    if (msg.includes('[]未匹配地址')) {
-      createMessage.warn('非嘉善县户籍');
-    } else {
-      // createMessage.warn(msg);
+    if (data.code !== 200) {
+      const msg = data.msg || data.message;
+      createMessage.warn(msg);
     }
   }
   resolve(data);

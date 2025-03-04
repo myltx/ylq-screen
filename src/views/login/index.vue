@@ -1,11 +1,11 @@
 <script setup lang="ts">
   import { useSettingStore } from '@/stores/index';
   import { login } from '@/api/login';
-  import { setUserInfo } from '@/utils';
+  import { setUserInfo, setToken } from '@/utils';
   import { useMessage } from '@/hooks/useMessage';
 
   const router = useRouter();
-  const { createMessage, notification } = useMessage();
+  const { notification } = useMessage();
   const settingStore = useSettingStore();
   const { isScale } = storeToRefs(settingStore);
   const wrapperStyle = {};
@@ -19,14 +19,12 @@
     userPassword: '',
   });
   const onFinish = (values: any) => {
-    console.log('Success:', values);
-    login(values).then((res) => {
+    login(values).then((res: any) => {
       if (res.code === 200) {
-        setUserInfo(res?.result);
+        setUserInfo(res?.result?.userInfo);
+        setToken(res?.result?.userInfo?.companyId);
         notification.success({ message: '登录成功' });
         router.replace('/');
-      } else {
-        createMessage.warn(res?.msg);
       }
     });
   };
