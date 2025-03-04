@@ -2,7 +2,7 @@ import { removeLocalStorage } from '@/utils';
 import { TIMEOUT, OTHER, NOLOGIN } from './error-code';
 import { useMessage } from '@/hooks/useMessage';
 import { Modal } from 'ant-design-vue';
-import { MIDDLE_LOGIN_PATH } from '@/helper';
+import { LOGIN_PATH } from '@/helper';
 
 const router = useRouter();
 const { createMessage } = useMessage();
@@ -61,7 +61,7 @@ export function loginOut(content: string) {
     cancelButtonProps: { style: { display: 'none' } },
     onOk: () => {
       removeLocalStorage();
-      router.replace(MIDDLE_LOGIN_PATH);
+      router.replace(LOGIN_PATH);
     },
   });
 }

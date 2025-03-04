@@ -1,7 +1,7 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
 import type { RouteRecordRaw } from 'vue-router';
 import { start, close } from '@/utils/nprogress';
-import { LOGIN_PATH, MIDDLE_LOGIN_PATH } from '@/helper';
+import { LOGIN_PATH } from '@/helper';
 import { getToken } from '@/utils';
 import { isDevFn } from '../../build/utils';
 
@@ -16,11 +16,6 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('@/views/login/index.vue'),
   },
   {
-    path: '/middle',
-    name: 'Middle',
-    component: () => import('@/views/login/middle.vue'),
-  },
-  {
     path: '/index',
     name: 'Index',
     component: () => import('@/views/index/index.vue'),
@@ -31,7 +26,7 @@ const router = createRouter({
   routes,
 });
 
-const whiteList = [LOGIN_PATH, MIDDLE_LOGIN_PATH];
+const whiteList = [LOGIN_PATH];
 
 router.beforeEach((to, from, next) => {
   start();
@@ -39,10 +34,10 @@ router.beforeEach((to, from, next) => {
   if (!getToken() && !whiteList.includes(to.path)) {
     if (isDevFn(import.meta.env.MODE)) {
       setTimeout(() => {
-        next(MIDDLE_LOGIN_PATH);
+        next(LOGIN_PATH);
       });
     } else {
-      next(MIDDLE_LOGIN_PATH);
+      next(LOGIN_PATH);
     }
   } else {
     setTimeout(() => {
