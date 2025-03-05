@@ -19,3 +19,11 @@ export function getEntryMaterialData(data: any) {
     data,
   });
 }
+
+export function storageMaterialData(data: any) {
+  return OtherAxios({
+    url: ServicePrefixEnum.YLQApi + '/storageMaterialData',
+    method: RequestEnum.POST,
+    data,
+  });
+}

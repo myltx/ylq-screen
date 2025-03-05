@@ -2,6 +2,7 @@
   import { useLoadingStore } from '@/stores/loading';
   import { getUserInfo } from '@/utils';
   import ReceiveMaterials from '../receiveMaterials/index.vue';
+  import Storage from '../storage/index.vue';
 
   const { isLoading } = storeToRefs(useLoadingStore());
   const userInfo = getUserInfo();
@@ -52,7 +53,8 @@
       </div>
     </template>
     <div class="px-50px py-30px mt-70px color-#fff">
-      <ReceiveMaterials />
+      <ReceiveMaterials v-if="activeIndex === 0" />
+      <Storage v-if="activeIndex === 1" />
     </div>
   </PageWrapper>
 </template>
