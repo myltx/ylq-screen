@@ -3,6 +3,7 @@
   import { getUserInfo } from '@/utils';
   import ReceiveMaterials from '../receiveMaterials/index.vue';
   import Storage from '../storage/index.vue';
+  import ProductionView from "../production-view/index.vue";
 
   const { isLoading } = storeToRefs(useLoadingStore());
   const userInfo = getUserInfo();
@@ -55,6 +56,7 @@
     <div class="px-50px py-30px mt-70px color-#fff">
       <ReceiveMaterials v-if="activeIndex === 0" />
       <Storage v-if="activeIndex === 1" />
+      <ProductionView  v-if="activeIndex === 3"/>
     </div>
   </PageWrapper>
 </template>
