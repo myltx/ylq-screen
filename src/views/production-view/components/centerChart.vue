@@ -30,75 +30,75 @@
       </div>
     </div>
     <BasicBox title="混凝土累计生产量" class="mt-15">
-         <div class="h-245px carousel-bg">
-          <MultiplePillars class="w-full h-245px" :data="SettingOutlined" id="MultiplePillars"/>
-         </div>
-      </BasicBox>
+      <div class="h-245px carousel-bg">
+        <MultiplePillars class="w-full h-245px" :data="SettingOutlined" id="MultiplePillars" />
+      </div>
+    </BasicBox>
   </div>
 </template>
 
 <script lang="ts" setup>
-import MultiplePillars from "@/components/MultiplePillars/index.vue";
-const SettingOutlined = {
-  data: [
-    ['product', '2012', '2013', '2014', '2015'],
-    ['TJ08-号机', 41.1, 30.4, 65.1, 53.3],
-    ['TJ08二号机', 86.5, 92.1, 85.7, 83.1],
-  ]
-}
+  import MultiplePillars from '@/components/MultiplePillars/index.vue';
+  const SettingOutlined = {
+    data: [
+      ['product', '2012', '2013', '2014', '2015'],
+      ['TJ08-号机', 41.1, 30.4, 65.1, 53.3],
+      ['TJ08二号机', 86.5, 92.1, 85.7, 83.1],
+    ],
+  };
 </script>
 
 <style scoped>
   .carousel-bg {
-    background: linear-gradient(to bottom, #072655, #123C72);
+    background: linear-gradient(to bottom, #072655, #123c72);
   }
   .center-chart {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-}
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
 
-.center-chart-title {
-  font-size: 24px;
-  color: #fff;
-  margin-bottom: 20px;
-}
+  .center-chart-title {
+    font-size: 24px;
+    color: #fff;
+    margin-bottom: 20px;
+  }
 
-.center-chart-content {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-}
+  .center-chart-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
 
-.center-chart-content-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0, 0, 0, 0.3);
-  border-radius: 10px;
-  color: #fff;
-  text-align: center;
-}
+  .center-chart-content-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    color: #fff;
+    text-align: center;
+  }
 
-.center-chart-content-item.large {
-  width: 257px;
-  height: 182px;
-}
+  .center-chart-content-item.large {
+    width: 257px;
+    height: 182px;
+  }
 
-.center-chart-content-item.small {
-  width: 225px;
-  height: 110px;
-}
+  .center-chart-content-item.small {
+    width: 225px;
+    height: 110px;
+  }
 
-.center-chart-content-item-title {
-  font-size: 18px;
-  margin-bottom: 10px;
-}
+  .center-chart-content-item-title {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
 
-.center-chart-content-item-value {
-  font-size: 24px;
-}
+  .center-chart-content-item-value {
+    font-size: 24px;
+  }
 </style>

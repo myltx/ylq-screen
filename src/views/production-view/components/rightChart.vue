@@ -18,153 +18,153 @@
       </div>
     </BasicBox>
     <BasicBox title="混凝土浇筑任务进度" class="m-[10_ 0]">
-      <AutoScrollTable class="auto-scroll-table"
+      <AutoScrollTable
+        class="auto-scroll-table"
         :headers="[
           {
             key: 'content',
             title: '项目名称',
-            style:{
+            style: {
               width: '100px',
-              textAlign: 'left'
-            }
+              textAlign: 'left',
+            },
           },
           {
             key: 'date',
             title: '强度等级',
-            style:{
+            style: {
               width: '100px',
-              textAlign: 'center'
-            }
+              textAlign: 'center',
+            },
           },
           {
             key: 'date',
             title: '任务方量',
-            style:{
+            style: {
               width: '100px',
-              textAlign: 'center'
-            }
+              textAlign: 'center',
+            },
           },
           {
             key: 'num',
             title: '实际方量',
-            style:{
+            style: {
               width: '100px',
-              textAlign: 'center'
-            }
+              textAlign: 'center',
+            },
           },
           {
             key: 'jd',
             title: '进度',
-            style:{
+            style: {
               width: '100px',
-              textAlign: 'center'
-            }
-          }
+              textAlign: 'center',
+            },
+          },
         ]"
         :rows="alarmList"
         height="300px"
-         :class-options="{
-            step: 0.5,
-          }"
+        :class-options="{
+          step: 0.5,
+        }"
       />
     </BasicBox>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
+  import { ref } from 'vue';
 
-const alarmList = ref([
- 
-  {
-    content: '这是一段文子这是一段文宁这是一段文作这是一段文折这是一段文宇',
-    date: 'C30',
-    num: 10,
-    jd: 1
-  },
-  {
-    content: '这是一段文子这是一段文宁这是一段文作这是一段文折这是一段文宇',
-    date: 'C30',
-    num: 10,
-    jd: 1
-  },
-  {
-    content: '这是一段文子这是一段文宁这是一段文作这是一段文折这是一段文宇',
-    date: 'C30',
-    num: 10,
-    jd: 1
-  },
-  {
-    content: '这是一段文子这是一段文宁这是一段文作这是一段文折这是一段文宇',
-    date: 'C30',
-    num: 10,
-    jd: 1
-  },
-  {
-    content: '这是一段文子这是一段文宁这是一段文作这是一段文折这是一段文宇',
-    date: 'C30',
-    num: 10,
-    jd: 1
-  },
-   {
-    content: '这是一段文子这是一段文宁这是一段文作这是一段文折这是一段文宇',
-    date: 'C30',
-    num: 10,
-    jd: 1
-  },
-  {
-    content: '这是一段文子这是一段文宁这是一段文作这是一段文折这是一段文宇',
-    date: 'C30',
-    num: 10,
-    jd: 1
-  },
-  {
-    content: '这是一段文子这是一段文宁这是一段文作这是一段文折这是一段文宇',
-    date: 'C30',
-    num: 10,
-    jd: 1
-  },
-  {
-    content: '这是一段文子这是一段文宁这是一段文作这是一段文折这是一段文宇',
-    date: 'C30',
-    num: 10,
-    jd: 1
-  }
-]);
+  const alarmList = ref([
+    {
+      content: '这是一段文子这是一段文宁这是一段文作这是一段文折这是一段文宇',
+      date: 'C30',
+      num: 10,
+      jd: 1,
+    },
+    {
+      content: '这是一段文子这是一段文宁这是一段文作这是一段文折这是一段文宇',
+      date: 'C30',
+      num: 10,
+      jd: 1,
+    },
+    {
+      content: '这是一段文子这是一段文宁这是一段文作这是一段文折这是一段文宇',
+      date: 'C30',
+      num: 10,
+      jd: 1,
+    },
+    {
+      content: '这是一段文子这是一段文宁这是一段文作这是一段文折这是一段文宇',
+      date: 'C30',
+      num: 10,
+      jd: 1,
+    },
+    {
+      content: '这是一段文子这是一段文宁这是一段文作这是一段文折这是一段文宇',
+      date: 'C30',
+      num: 10,
+      jd: 1,
+    },
+    {
+      content: '这是一段文子这是一段文宁这是一段文作这是一段文折这是一段文宇',
+      date: 'C30',
+      num: 10,
+      jd: 1,
+    },
+    {
+      content: '这是一段文子这是一段文宁这是一段文作这是一段文折这是一段文宇',
+      date: 'C30',
+      num: 10,
+      jd: 1,
+    },
+    {
+      content: '这是一段文子这是一段文宁这是一段文作这是一段文折这是一段文宇',
+      date: 'C30',
+      num: 10,
+      jd: 1,
+    },
+    {
+      content: '这是一段文子这是一段文宁这是一段文作这是一段文折这是一段文宇',
+      date: 'C30',
+      num: 10,
+      jd: 1,
+    },
+  ]);
 </script>
 
 <style scoped lang="scss">
-.carousel-bg {
-  background: linear-gradient(to bottom, #072655, #123c72);
-  color: #fff;
-}
-:deep(.ant-descriptions-item-label) {
-  color: #fff;
-  line-height: auto;
-}
-:deep(.ant-descriptions-item-content) {
-  color: #fff;
-  line-height: auto;
-}
-.cell-item {
-  display: flex;
-  align-items: center;
-}
-:deep(td) {
-  border: none !important;
-}
-:deep(.ant-progress-text) {
-  color: #fff !important;
-}
-:deep(.auto-scroll-table .td) {
-  width: 100%;
-  white-space:wrap; //文本不会换行
-  text-align: center; // 文本居中
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  .px-16px{
-    padding: 12px 0px !important;
+  .carousel-bg {
+    background: linear-gradient(to bottom, #072655, #123c72);
+    color: #fff;
   }
-}
+  :deep(.ant-descriptions-item-label) {
+    color: #fff;
+    line-height: auto;
+  }
+  :deep(.ant-descriptions-item-content) {
+    color: #fff;
+    line-height: auto;
+  }
+  .cell-item {
+    display: flex;
+    align-items: center;
+  }
+  :deep(td) {
+    border: none !important;
+  }
+  :deep(.ant-progress-text) {
+    color: #fff !important;
+  }
+  :deep(.auto-scroll-table .td) {
+    width: 100%;
+    white-space: wrap; //文本不会换行
+    text-align: center; // 文本居中
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .px-16px {
+      padding: 12px 0px !important;
+    }
+  }
 </style>

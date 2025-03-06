@@ -7,20 +7,20 @@
  * @FilePath: \ylq-screen\src\views\production-view\components\leftChart.vue
 -->
 <script setup lang="ts">
-import { LeftCircleOutlined, RightCircleOutlined, SettingOutlined } from '@ant-design/icons-vue';
-import PieChart from "@/components/PieChart/index.vue";
-import SingleColumnChart from "@/components/SingleColumnChart/index.vue";
-import OutputChart from "@/components/OutputChart/index.vue";
+  import { LeftCircleOutlined, RightCircleOutlined, SettingOutlined } from '@ant-design/icons-vue';
+  import PieChart from '@/components/PieChart/index.vue';
+  import SingleColumnChart from '@/components/SingleColumnChart/index.vue';
+  import OutputChart from '@/components/OutputChart/index.vue';
   const alarmList = ref([
     {
       name: '湿喷C20',
       value: '20.3',
     },
-      {
+    {
       name: 'C15',
       value: '1.3',
     },
-     {
+    {
       name: 'C30P8',
       value: '0.3',
     },
@@ -28,7 +28,7 @@ import OutputChart from "@/components/OutputChart/index.vue";
       name: '湿喷C25',
       value: '0.3',
     },
-     {
+    {
       name: 'C20',
       value: '0.3',
     },
@@ -38,10 +38,10 @@ import OutputChart from "@/components/OutputChart/index.vue";
     },
   ]);
 
-const SettingOutlined = {
-  name: ['天然砂0-4.75mm', '天然砂1-4.75mm', '天然砂2-4.75mm',],
-  value: [100, 200, 300]
-  }
+  const SettingOutlined = {
+    name: ['天然砂0-4.75mm', '天然砂1-4.75mm', '天然砂2-4.75mm'],
+    value: [100, 200, 300],
+  };
 
   const onChange = (current: number) => {
     console.log(current);
@@ -50,20 +50,24 @@ const SettingOutlined = {
 <template>
   <div class="mt-24px flex justify-between">
     <div class="w-520px">
-      <BasicBox title="混凝土累计生产量" >
+      <BasicBox title="混凝土累计生产量">
         <div class="carousel-bg">
-          <PieChart class="w-full h-245px" :data="alarmList" id="PieChart"/>
-         </div>
+          <PieChart class="w-full h-245px" :data="alarmList" id="PieChart" />
+        </div>
       </BasicBox>
-      <BasicBox title="原材料消耗动态" >
+      <BasicBox title="原材料消耗动态">
         <div class="carousel-bg h-245px">
-          <SingleColumnChart class="w-full h-245px" :data="SettingOutlined" id="SingleColumnChart"/>
-         </div>
+          <SingleColumnChart
+            class="w-full h-245px"
+            :data="SettingOutlined"
+            id="SingleColumnChart"
+          />
+        </div>
       </BasicBox>
-      <BasicBox title="混凝土累计生产量" >
-         <div class="carousel-bg h-245px">
-          <OutputChart class="w-full h-245px z-50" :data="SettingOutlined" id="OutputChart"/>
-         </div>
+      <BasicBox title="混凝土累计生产量">
+        <div class="carousel-bg h-245px">
+          <OutputChart class="w-full h-245px z-50" :data="SettingOutlined" id="OutputChart" />
+        </div>
       </BasicBox>
     </div>
   </div>
@@ -71,7 +75,7 @@ const SettingOutlined = {
 
 <style scoped lang="scss">
   .carousel-bg {
-    background: linear-gradient(to bottom, #072655, #123C72);
+    background: linear-gradient(to bottom, #072655, #123c72);
   }
 
   :deep(.slick-arrow.custom-slick-arrow) {
@@ -95,7 +99,7 @@ const SettingOutlined = {
   :deep(.slick-slide h3) {
     color: #fff;
   }
-  .carousel-bg{
-     background: linear-gradient(to bottom, #061C44, #123C72);
+  .carousel-bg {
+    background: linear-gradient(to bottom, #061c44, #123c72);
   }
 </style>
