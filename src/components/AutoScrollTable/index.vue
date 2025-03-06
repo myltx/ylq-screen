@@ -1,5 +1,6 @@
 <script lang="ts" setup>
   import { vue3ScrollSeamless } from 'vue3-scroll-seamless';
+  import type { CSSProperties } from 'vue'; // Vue 项目
   export interface Headers {
     key: string;
     style: Object;
@@ -14,9 +15,14 @@
     waitTime?: number;
     switchDelay?: number;
   }
+  interface Rows {
+    style: CSSProperties;
+    [key: string]: unknown;
+  }
+
   interface Props extends ClassOption {
     headers: Headers[];
-    rows: { [key: string]: string }[];
+    rows: Rows[];
     scrollAuto: boolean;
     height?: string | number;
     classOptions: Object;
@@ -84,7 +90,7 @@
             <div
               class="flex-1 td"
               :style="{
-                ...(th?.style ? th.style : {}),
+                ...(row?.style ? row.style : {}),
               }"
               v-for="th in props.headers.filter((item) => item.key !== 'id')"
               :key="th.key"
