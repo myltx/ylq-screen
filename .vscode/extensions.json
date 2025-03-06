@@ -1,5 +1,7 @@
 {
   "recommendations": [
-    "antfu.unocss"
+    "antfu.unocss",
+    "esbenp.prettier-vscode",
+    "rvest.vs-code-prettier-eslint"
   ]
 }
