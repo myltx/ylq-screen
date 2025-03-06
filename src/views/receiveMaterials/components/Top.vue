@@ -5,6 +5,10 @@
       content: '混凝土',
       date: 'C30',
       num: 10,
+      // style: {
+      //   color: 'red',
+      // },
+      // class: 'font-bold',
     },
   ]);
 
