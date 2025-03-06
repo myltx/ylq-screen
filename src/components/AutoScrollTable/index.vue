@@ -17,6 +17,7 @@
   }
   interface Rows {
     style: CSSProperties;
+    class: string;
     [key: string]: unknown;
   }
 
@@ -89,6 +90,7 @@
           <div class="flex px-16px py-6px tr text-12px" v-for="row in props.rows" :key="row?.id">
             <div
               class="flex-1 td"
+              :class="row.class"
               :style="{
                 ...(row?.style ? row.style : {}),
               }"
