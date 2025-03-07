@@ -17,7 +17,7 @@
         </a-descriptions>
       </div>
     </BasicBox>
-    <BasicBox title="混凝土浇筑任务进度" class="m-[10_ 0]">
+    <BasicBox title="混凝土浇筑任务进度" class="mt-15">
       <AutoScrollTable
         class="auto-scroll-table"
         :headers="[
@@ -67,6 +67,7 @@
         :class-options="{
           step: 0.5,
         }"
+        :scroll-auto="true"
       />
     </BasicBox>
   </div>
@@ -81,54 +82,72 @@
       date: 'C30',
       num: 10,
       jd: 1,
+      style: {},
+      class: '',
     },
     {
       content: '这是一段文子这是一段文宁这是一段文作这是一段文折这是一段文宇',
       date: 'C30',
       num: 10,
       jd: 1,
+      style: {},
+      class: '',
     },
     {
       content: '这是一段文子这是一段文宁这是一段文作这是一段文折这是一段文宇',
       date: 'C30',
       num: 10,
       jd: 1,
+      style: {},
+      class: '',
     },
     {
       content: '这是一段文子这是一段文宁这是一段文作这是一段文折这是一段文宇',
       date: 'C30',
       num: 10,
       jd: 1,
+      style: {},
+      class: '',
     },
     {
       content: '这是一段文子这是一段文宁这是一段文作这是一段文折这是一段文宇',
       date: 'C30',
       num: 10,
       jd: 1,
+      style: {},
+      class: '',
     },
     {
       content: '这是一段文子这是一段文宁这是一段文作这是一段文折这是一段文宇',
       date: 'C30',
       num: 10,
       jd: 1,
+      style: {},
+      class: '',
     },
     {
       content: '这是一段文子这是一段文宁这是一段文作这是一段文折这是一段文宇',
       date: 'C30',
       num: 10,
       jd: 1,
+      style: {},
+      class: '',
     },
     {
       content: '这是一段文子这是一段文宁这是一段文作这是一段文折这是一段文宇',
       date: 'C30',
       num: 10,
       jd: 1,
+      style: {},
+      class: '',
     },
     {
       content: '这是一段文子这是一段文宁这是一段文作这是一段文折这是一段文宇',
       date: 'C30',
       num: 10,
       jd: 1,
+      style: {},
+      class: '',
     },
   ]);
 </script>

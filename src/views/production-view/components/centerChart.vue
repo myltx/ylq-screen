@@ -11,7 +11,7 @@
         <div class="center-chart-content-item-value">2673.2方</div>
       </div>
     </div>
-    <div class="center-chart-content mt-30">
+    <div class="center-chart-content mt-20">
       <div class="center-chart-content-item small">
         <div class="center-chart-content-item-title">周产量</div>
         <div class="center-chart-content-item-value">231方</div>
@@ -69,7 +69,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px;
+    gap: 30px;
   }
 
   .center-chart-content-item {
@@ -77,7 +77,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: rgba(0, 0, 0, 0.3);
     border-radius: 10px;
     color: #fff;
     text-align: center;
@@ -86,11 +85,15 @@
   .center-chart-content-item.large {
     width: 257px;
     height: 182px;
+    background: url(../../../assets/images/prodaction/total_card.png) no-repeat;
+    background-size: 100% 100%;
   }
 
   .center-chart-content-item.small {
     width: 225px;
     height: 110px;
+    background: url(../../../assets/images/prodaction/yield_card.png) no-repeat;
+    background-size: 100% 100%;
   }
 
   .center-chart-content-item-title {

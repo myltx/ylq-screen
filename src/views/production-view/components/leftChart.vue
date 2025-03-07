@@ -7,7 +7,7 @@
  * @FilePath: \ylq-screen\src\views\production-view\components\leftChart.vue
 -->
 <script setup lang="ts">
-  import { LeftCircleOutlined, RightCircleOutlined, SettingOutlined } from '@ant-design/icons-vue';
+  // import { LeftCircleOutlined, RightCircleOutlined, SettingOutlined } from '@ant-design/icons-vue';
   import PieChart from '@/components/PieChart/index.vue';
   import SingleColumnChart from '@/components/SingleColumnChart/index.vue';
   import OutputChart from '@/components/OutputChart/index.vue';
@@ -38,13 +38,9 @@
     },
   ]);
 
-  const SettingOutlined = {
+  const SettingOutlined: any = {
     name: ['天然砂0-4.75mm', '天然砂1-4.75mm', '天然砂2-4.75mm'],
     value: [100, 200, 300],
-  };
-
-  const onChange = (current: number) => {
-    console.log(current);
   };
 </script>
 <template>

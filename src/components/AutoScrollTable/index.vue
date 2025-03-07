@@ -16,8 +16,8 @@
     switchDelay?: number;
   }
   interface Rows {
-    style: CSSProperties;
-    class: string;
+    style?: CSSProperties;
+    class?: string;
     [key: string]: unknown;
   }
 
