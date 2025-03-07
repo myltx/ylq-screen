@@ -3,9 +3,10 @@
   import type { CSSProperties } from 'vue'; // Vue 项目
   export interface Headers {
     key: string;
-    style: Object;
+    style: CSSProperties;
     title: string;
-    tdStyle?: Object;
+    tdStyle?: CSSProperties;
+    trStyle?: CSSProperties;
     render?: Function;
   }
   interface ClassOption {
@@ -30,6 +31,7 @@
     height?: string | number;
     classOptions: Object;
     showIndex?: boolean;
+    theadStyle?: CSSProperties;
   }
   const props = withDefaults(defineProps<Props>(), {
     scrollAuto: true,
@@ -68,6 +70,9 @@
   >
     <div
       class="w-100% flex thead py-10px px-16px color-#4EA4FF text-20px font-500"
+      :style="{
+        ...(props.theadStyle ? props.theadStyle : {}),
+      }"
       v-if="headers.length"
     >
       <div
@@ -93,6 +98,9 @@
             class="flex px-16px py-6px tr text-16px"
             v-for="(row, index) in props.rows"
             :key="row?.id"
+            :style="{
+              ...(headers[index]?.trStyle ? headers[index]?.trStyle : {}),
+            }"
           >
             <div
               class="flex-1 td"
@@ -128,13 +136,23 @@
         </vue3ScrollSeamless>
       </div>
       <div class="tbody overflow-y-auto" v-else>
-        <div class="flex px-16px py-6px tr text-16px" v-for="row in props.rows" :key="row.id">
+        <div
+          class="flex px-16px py-6px tr text-16px"
+          v-for="(row, index) in props.rows"
+          :key="row.id"
+          :style="{
+            ...(headers[index]?.trStyle ? headers[index]?.trStyle : {}),
+          }"
+        >
           <div
             class="flex-1 td"
             v-for="th in props.headers.filter((item) => item.key !== 'id')"
             :key="th.key"
+            :style="{
+              ...(th?.tdStyle ? th?.tdStyle : {}),
+            }"
           >
-            {{ row[th.key] }}
+            {{ row[th.key] || '/' }}
           </div>
         </div>
       </div>
