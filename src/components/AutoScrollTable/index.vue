@@ -128,7 +128,7 @@
         </vue3ScrollSeamless>
       </div>
       <div class="tbody overflow-y-auto" v-else>
-        <div class="flex px-16px py-6px tr text-12px" v-for="row in props.rows" :key="row.id">
+        <div class="flex px-16px py-6px tr text-16px" v-for="row in props.rows" :key="row.id">
           <div
             class="flex-1 td"
             v-for="th in props.headers.filter((item) => item.key !== 'id')"
