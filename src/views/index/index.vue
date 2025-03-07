@@ -3,8 +3,8 @@
   import { getUserInfo } from '@/utils';
   import ReceiveMaterials from '../receiveMaterials/index.vue';
   import Storage from '../storage/index.vue';
-  import ProductionView from "../production-view/index.vue";
-
+  import ProductionView from '../production-view/index.vue';
+  import Ingredient from '../ingredient/index.vue';
   const { isLoading } = storeToRefs(useLoadingStore());
   const userInfo = getUserInfo();
   const activeIndex = ref(0);
@@ -17,16 +17,16 @@
 <template>
   <PageWrapper :title="userInfo?.companyName">
     <template #header-left>
-      <div class="flex items-center justify-between w-80% mt-28px">
+      <div class="flex items-center justify-between w-[80%] mt-[28px]">
         <div
-          class="nav w-181px h-52px"
+          class="nav w-[181px] h-[52px]"
           :class="{ active: activeIndex === 0 }"
           @click="handleNav(0)"
         >
           收料
         </div>
         <div
-          class="nav w-181px h-52px"
+          class="nav w-[181px] h-[52px]"
           :class="{ active: activeIndex === 1 }"
           @click="handleNav(1)"
         >
@@ -35,16 +35,16 @@
       </div>
     </template>
     <template #header-right>
-      <div class="flex items-center justify-between w-80% mt-28px">
+      <div class="flex items-center justify-between w-[80%] mt-[28px]">
         <div
-          class="nav w-181px h-52px"
+          class="nav w-[181px] h-[52px]"
           :class="{ active: activeIndex === 2 }"
           @click="handleNav(2)"
         >
           配料
         </div>
         <div
-          class="nav w-181px h-52px"
+          class="nav w-[181px] h-[52px]"
           :class="{ active: activeIndex === 3 }"
           @click="handleNav(3)"
         >
@@ -53,10 +53,11 @@
         <!-- <div class="color-#eee text-20px">退出登录</div> -->
       </div>
     </template>
-    <div class="px-50px py-30px mt-70px color-#fff">
+    <div class="px-[50px] py-[30px] mt-[70px] color-[#fff]">
       <ReceiveMaterials v-if="activeIndex === 0" />
       <Storage v-if="activeIndex === 1" />
-      <ProductionView  v-if="activeIndex === 3"/>
+      <Ingredient v-if="activeIndex === 2" />
+      <ProductionView v-if="activeIndex === 3" />
     </div>
   </PageWrapper>
 </template>
