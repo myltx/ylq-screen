@@ -5,6 +5,8 @@
     key: string;
     style: Object;
     title: string;
+    tdStyle?: Object;
+    render?: Function;
   }
   interface ClassOption {
     step?: number;
@@ -65,7 +67,7 @@
     ref="tableContainer"
   >
     <div
-      class="w-100% flex thead py-6px px-16px color-#4EA4FF text-18px font-500"
+      class="w-100% flex thead py-10px px-16px color-#4EA4FF text-20px font-500"
       v-if="headers.length"
     >
       <div
@@ -87,17 +89,40 @@
           :classOptions="defaultClassOption"
           :dataList="props.rows"
         >
-          <div class="flex px-16px py-6px tr text-12px" v-for="row in props.rows" :key="row?.id">
+          <div
+            class="flex px-16px py-6px tr text-16px"
+            v-for="(row, index) in props.rows"
+            :key="row?.id"
+          >
             <div
               class="flex-1 td"
               :class="row.class"
               :style="{
                 ...(row?.style ? row.style : {}),
+                ...(th?.tdStyle ? th?.tdStyle : {}),
               }"
               v-for="th in props.headers.filter((item) => item.key !== 'id')"
               :key="th.key"
             >
-              {{ row[th?.key] }}
+              <div
+                :class="row.class"
+                :style="{
+                  ...(row?.style ? row.style : {}),
+                  ...(th?.tdStyle ? th?.tdStyle : {}),
+                }"
+                v-html="th.render(row)"
+                v-if="th.render"
+              ></div>
+              <div
+                :class="row.class"
+                :style="{
+                  ...(row?.style ? row.style : {}),
+                  ...(th?.tdStyle ? th?.tdStyle : {}),
+                }"
+                v-else
+              >
+                {{ row[th?.key] }}</div
+              >
             </div>
           </div>
         </vue3ScrollSeamless>

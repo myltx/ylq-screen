@@ -54,7 +54,7 @@
           type: 'gauge',
           endAngle: -20,
           startAngle: 200,
-          center: ['35%', '50%'],
+          center: ['35%', '65%'],
           radius: '90%',
           axisLine: {
             lineStyle: {
@@ -116,7 +116,7 @@
         {
           type: 'pie',
           radius: ['0', '40%'],
-          center: ['35%', '50%'],
+          center: ['35%', '65%'],
           z: 8,
           hoverAnimation: false,
           data: [

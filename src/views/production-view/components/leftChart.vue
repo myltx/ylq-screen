@@ -53,8 +53,8 @@
           />
         </div>
       </BasicBox>
-      <BasicBox title="原材料消耗动态">
-        <div class="carousel-bg1 h-245px">
+      <BasicBox title="原材料消耗动态" :height="'245px'">
+        <div class="carousel-bg1 h-225px">
           <SingleColumnChart
             class="w-full h-245px"
             :data="SettingOutlined"
@@ -63,8 +63,8 @@
           />
         </div>
       </BasicBox>
-      <BasicBox title="混凝土累计生产量">
-        <div class="carousel-bg h-245px">
+      <BasicBox title="混凝土累计生产量" :height="'180px'">
+        <div class="carousel-bg h-200px">
           <div class="text-center">{{ instrumentPanelData?.deviceName }}</div>
           <div class="h-80% w-100% flex items-center justify-between relative">
             <OutputChart
