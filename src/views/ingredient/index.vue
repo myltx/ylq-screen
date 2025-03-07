@@ -25,18 +25,26 @@
   </div>
   <!-- 第三个表格 -->
   <div class="flex">
-    <div class="w-[20%] thead color-[#4EA4FF] text-[30px] font-medium text-center">
-      <div class="h-[80px] line-height-[80px] bgColor">材料名称</div>
-      <div class="h-[80px] line-height-[80px]">理论用量</div>
+    <div class="thead color-[#4EA4FF] text-[20px] font-medium text-center font-bold">
+      <div
+        class="w-[300px] h-[80px] line-height-[80px] bgColor"
+        v-for="(row, index) in headersBot"
+        :key="index"
+        :style="row.style"
+        :class="index % 2 === 0 ? '' : 'bgColor'"
+        >{{ row.title }}</div
+      >
+      <!-- <div class="h-[80px] line-height-[80px]">理论用量</div>
       <div class="h-[80px] line-height-[80px] bgColor">规格型号</div>
       <div class="h-[80px] line-height-[80px]">实际用量</div>
-      <div class="h-[80px] line-height-[80px] bgColor">含水量</div>
+      <div class="h-[80px] line-height-[80px] bgColor">含水量</div> -->
     </div>
     <div class="flex w-[80%] overflow-hidden overflow-x-scroll">
       <div
-        class="thead color-[#4EA4FF] text-[22px] text-center"
+        class="thead color-[#4EA4FF] text-[16px] text-center"
         v-for="(row, index) in dataList"
         :key="index"
+        :style="row.style"
       >
         <div class="w-[200px] h-[80px] line-height-[80px] bgColor px-[12px]">{{
           row.materialName
@@ -139,6 +147,50 @@
       },
     },
   ]);
+  //第三表格
+  //表头
+  const headersBot = ref([
+    {
+      key: 'materialName',
+      title: '材料名称',
+      style: {
+        width: '200px',
+        textAlign: 'center',
+      },
+    },
+    {
+      key: 'TheoreticalDosage',
+      title: '理论用量',
+      style: {
+        width: '200px',
+        textAlign: 'center',
+      },
+    },
+    {
+      key: 'specification',
+      title: '规格型号',
+      style: {
+        width: '200px',
+        textAlign: 'center',
+      },
+    },
+    {
+      key: 'actualUsage',
+      title: '实际用量',
+      style: {
+        width: '200px',
+        textAlign: 'center',
+      },
+    },
+    {
+      key: 'moistureContent',
+      title: '含水量',
+      style: {
+        width: '200px',
+        textAlign: 'center',
+      },
+    },
+  ]);
   const dataList = ref([
     {
       materialName: '粗集料2',
@@ -149,6 +201,7 @@
       style: {
         width: '200px',
         textAlign: 'center',
+        color: 'red',
       },
     },
     {
