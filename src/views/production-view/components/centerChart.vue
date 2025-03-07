@@ -4,53 +4,64 @@
     <div class="center-chart-content mt-10">
       <div class="center-chart-content-item large">
         <div class="center-chart-content-item-title">场站累计产量</div>
-        <div class="center-chart-content-item-value">12153.51方</div>
+        <div class="center-chart-content-item-value"> {{ detailData?.totalSum }} 方</div>
       </div>
       <div class="center-chart-content-item large">
         <div class="center-chart-content-item-title">2024年产量</div>
-        <div class="center-chart-content-item-value">2673.2方</div>
+        <div class="center-chart-content-item-value">{{ detailData?.yearSum }} 方</div>
       </div>
     </div>
     <div class="center-chart-content mt-20">
       <div class="center-chart-content-item small">
         <div class="center-chart-content-item-title">周产量</div>
-        <div class="center-chart-content-item-value">231方</div>
+        <div class="center-chart-content-item-value">{{ detailData?.weekSum }} 方</div>
       </div>
       <div class="center-chart-content-item small">
         <div class="center-chart-content-item-title">季产量</div>
-        <div class="center-chart-content-item-value">12153.51方</div>
+        <div class="center-chart-content-item-value">{{ detailData?.seasonSum }} 方</div>
       </div>
       <div class="center-chart-content-item small">
         <div class="center-chart-content-item-title">月产量</div>
-        <div class="center-chart-content-item-value">237方</div>
+        <div class="center-chart-content-item-value">{{ detailData?.monthSum }} 方</div>
       </div>
       <div class="center-chart-content-item small">
         <div class="center-chart-content-item-title">日产量</div>
-        <div class="center-chart-content-item-value">38方</div>
+        <div class="center-chart-content-item-value">{{ detailData?.daySum }} 方</div>
       </div>
     </div>
-    <BasicBox title="混凝土累计生产量" class="mt-15">
+    <BasicBox title="产能情况报表" class="mt-15">
       <div class="h-245px carousel-bg">
-        <MultiplePillars class="w-full h-245px" :data="SettingOutlined" id="MultiplePillars" />
+        <MultiplePillars
+          class="w-full h-245px"
+          :data="SettingOutlined"
+          id="MultiplePillars"
+          v-if="SettingOutlined.length"
+        />
       </div>
     </BasicBox>
   </div>
 </template>
 
 <script lang="ts" setup>
+  import { getMachineProduce, getProduceCaculation } from '@/api/cockpit';
   import MultiplePillars from '@/components/MultiplePillars/index.vue';
-  const SettingOutlined = {
-    data: [
-      ['product', '2012', '2013', '2014', '2015'],
-      ['TJ08-号机', 41.1, 30.4, 65.1, 53.3],
-      ['TJ08二号机', 86.5, 92.1, 85.7, 83.1],
-    ],
-  };
+  import { getUserInfo } from '@/utils';
+
+  const userInfo = getUserInfo();
+  const detailData = ref<any>({});
+  const SettingOutlined = ref<any>([]);
+  // 中间
+  getProduceCaculation({ companyId: userInfo.companyId }).then((res: any) => {
+    detailData.value = res.data;
+  });
+  getMachineProduce({ companyId: userInfo.companyId }).then((res: any) => {
+    SettingOutlined.value = res.data;
+  });
 </script>
 
 <style scoped>
   .carousel-bg {
-    background: linear-gradient(to bottom, #072655, #123c72);
+    background: linear-gradient(to top, rgba(17, 52, 100, 0.5), rgba(17, 52, 100, 0));
   }
   .center-chart {
     display: flex;

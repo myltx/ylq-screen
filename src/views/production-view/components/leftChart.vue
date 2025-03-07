@@ -1,68 +1,101 @@
-<!--
- * @Author: dongpenghu
- * @Date: 2025-03-05 22:15:32
- * @LastEditors: dongpenghu
- * @LastEditTime: 2025-03-06 01:37:38
- * @Description: 描述
- * @FilePath: \ylq-screen\src\views\production-view\components\leftChart.vue
--->
 <script setup lang="ts">
   // import { LeftCircleOutlined, RightCircleOutlined, SettingOutlined } from '@ant-design/icons-vue';
   import PieChart from '@/components/PieChart/index.vue';
   import SingleColumnChart from '@/components/SingleColumnChart/index.vue';
   import OutputChart from '@/components/OutputChart/index.vue';
-  const alarmList = ref([
-    {
-      name: '湿喷C20',
-      value: '20.3',
-    },
-    {
-      name: 'C15',
-      value: '1.3',
-    },
-    {
-      name: 'C30P8',
-      value: '0.3',
-    },
-    {
-      name: '湿喷C25',
-      value: '0.3',
-    },
-    {
-      name: 'C20',
-      value: '0.3',
-    },
-    {
-      name: 'C25',
-      value: '0.3',
-    },
-  ]);
+  import { getCaculationByStrength, getEnvMonitor, getMaterialNumber } from '@/api/cockpit/index';
+  import { getUserInfo } from '@/utils';
 
-  const SettingOutlined: any = {
-    name: ['天然砂0-4.75mm', '天然砂1-4.75mm', '天然砂2-4.75mm'],
-    value: [100, 200, 300],
-  };
+  const userInfo = getUserInfo();
+
+  const alarmList = ref([]);
+  const SettingOutlined = ref<any>({
+    name: [],
+    value: [],
+  });
+  const instrumentPanelData = ref<any>({});
+  getCaculationByStrength({
+    companyId: userInfo.companyId,
+  }).then((res: any) => {
+    alarmList.value = res.data.map((item: any) => {
+      return {
+        name: item.F_StrengthGrade,
+        value: item.GradeSum,
+        ...item,
+      };
+    });
+  });
+  getMaterialNumber({
+    companyId: userInfo.companyId,
+  }).then((res: any) => {
+    SettingOutlined.value = {
+      name: res.data.map((item: any) => item.ClName),
+      value: res.data.map((item: any) => item.ClYL),
+    };
+  });
+
+  getEnvMonitor({
+    companyId: userInfo.companyId,
+  }).then((res: any) => {
+    instrumentPanelData.value = res.data;
+  });
 </script>
 <template>
   <div class="mt-24px flex justify-between">
     <div class="w-520px">
       <BasicBox title="混凝土累计生产量">
         <div class="carousel-bg">
-          <PieChart class="w-full h-245px" :data="alarmList" id="PieChart" />
+          <PieChart
+            class="w-full h-245px"
+            :data="alarmList"
+            id="PieChart"
+            v-if="alarmList.length"
+          />
         </div>
       </BasicBox>
       <BasicBox title="原材料消耗动态">
-        <div class="carousel-bg h-245px">
+        <div class="carousel-bg1 h-245px">
           <SingleColumnChart
             class="w-full h-245px"
             :data="SettingOutlined"
+            v-if="SettingOutlined.name.length && SettingOutlined.value.length"
             id="SingleColumnChart"
           />
         </div>
       </BasicBox>
       <BasicBox title="混凝土累计生产量">
         <div class="carousel-bg h-245px">
-          <OutputChart class="w-full h-245px z-50" :data="SettingOutlined" id="OutputChart" />
+          <div class="text-center">{{ instrumentPanelData?.deviceName }}</div>
+          <div class="h-80% w-100% flex items-center justify-between relative">
+            <OutputChart
+              class="w-80% h-100% z-50"
+              :data="instrumentPanelData"
+              id="OutputChart"
+              v-if="Object.keys(instrumentPanelData).length"
+            />
+            <div
+              class="w-30% h-100% flex flex-col items-center justify-between absolute right-0 top-10px"
+            >
+              <div class="w-100%">
+                <div class="flex items-center justify-between h-30px">
+                  <div>PM2.5</div>
+                  <div> {{ instrumentPanelData?.pm25 }} ug/m³ </div>
+                </div>
+                <div class="flex items-center justify-between h-30px">
+                  <div>PM10</div>
+                  <div> {{ instrumentPanelData?.pm10 }} ug/m³ </div>
+                </div>
+                <div class="flex items-center justify-between h-30px">
+                  <div>温度</div>
+                  <div> {{ instrumentPanelData?.temperature }} ℃ </div>
+                </div>
+                <div class="flex items-center justify-between h-30px">
+                  <div>湿度</div>
+                  <div> {{ instrumentPanelData?.humidity }} %RH </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </BasicBox>
     </div>
@@ -71,7 +104,10 @@
 
 <style scoped lang="scss">
   .carousel-bg {
-    background: linear-gradient(to bottom, #072655, #123c72);
+    background: linear-gradient(to top, rgba(17, 52, 100, 0.5), rgba(17, 52, 100, 0));
+  }
+  .carousel-bg1 {
+    background: linear-gradient(to top, rgba(17, 52, 100, 0.5), rgba(17, 52, 100, 0));
   }
 
   :deep(.slick-arrow.custom-slick-arrow) {
@@ -94,8 +130,5 @@
 
   :deep(.slick-slide h3) {
     color: #fff;
-  }
-  .carousel-bg {
-    background: linear-gradient(to bottom, #061c44, #123c72);
   }
 </style>

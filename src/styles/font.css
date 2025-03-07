@@ -1,0 +1,9 @@
+@font-face {
+  font-family: 'PangMenZhengDao';
+  src: url('@/assets/font/庞门正道.ttf');
+}
+
+@font-face {
+  font-family: 'Oswald';
+  src: url('@/assets/font/Oswald-Regular.ttf');
+}

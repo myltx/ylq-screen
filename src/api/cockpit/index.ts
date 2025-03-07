@@ -27,3 +27,59 @@ export function storageMaterialData(data: any) {
     data,
   });
 }
+
+export function getCaculationByStrength(data: any) {
+  return OtherAxios({
+    url: ServicePrefixEnum.YLQApi + '/getCaculationByStrength',
+    method: RequestEnum.POST,
+    data,
+  });
+}
+
+export function getMaterialNumber(data: any) {
+  return OtherAxios({
+    url: ServicePrefixEnum.YLQApi + '/getMaterialNumber',
+    method: RequestEnum.POST,
+    data,
+  });
+}
+
+export function getEnvMonitor(data: any) {
+  return OtherAxios({
+    url: ServicePrefixEnum.YLQApi + '/getEnvMonitor',
+    method: RequestEnum.POST,
+    data,
+  });
+}
+
+export function getProduceCaculation(data: any) {
+  return OtherAxios({
+    url: ServicePrefixEnum.YLQApi + '/getProduceCaculation',
+    method: RequestEnum.POST,
+    data,
+  });
+}
+
+export function getMachineProduce(data: any) {
+  return OtherAxios({
+    url: ServicePrefixEnum.YLQApi + '/getMachineProduce',
+    method: RequestEnum.POST,
+    data,
+  });
+}
+
+export function getLatestPouringOrder(data: any) {
+  return OtherAxios({
+    url: ServicePrefixEnum.YLQApi + '/getLatestPouringOrder',
+    method: RequestEnum.POST,
+    data,
+  });
+}
+
+export function getPouringOrderList(data: any) {
+  return OtherAxios({
+    url: ServicePrefixEnum.YLQApi + '/getPouringOrderList',
+    method: RequestEnum.POST,
+    data,
+  });
+}

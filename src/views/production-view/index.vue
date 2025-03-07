@@ -2,6 +2,7 @@
   import leftChart from './components/leftChart.vue';
   import centerChart from './components/centerChart.vue';
   import rightChart from './components/rightChart.vue';
+  import { getCaculationByStrength } from '@/api/cockpit/index';
 
   import { getEntryMaterialData } from '@/api/cockpit';
   import { getUserInfo } from '@/utils';
@@ -9,6 +10,10 @@
 
   const { startLoading, endLoading } = useLoadingStore();
   const userInfo = getUserInfo();
+
+  // Promise.all([getCaculationByStrength({ companyId: userInfo.companyId })]).then((res) => {
+  //   console.log(res);
+  // });
 
   const detailData = ref({});
 
