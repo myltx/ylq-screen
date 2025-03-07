@@ -1,16 +1,15 @@
 <script setup lang="ts">
+  import { receiveMaterialData } from '@/api/cockpit';
+  import { getUserInfo } from '@/utils';
   import { LeftCircleOutlined, RightCircleOutlined } from '@ant-design/icons-vue';
-  const alarmList = ref([
-    {
-      content: '混凝土',
-      date: 'C30',
-      num: 10,
-      // style: {
-      //   color: 'red',
-      // },
-      // class: 'font-bold',
-    },
-  ]);
+
+  const userInfo = getUserInfo();
+  const alarmList = ref([]);
+  receiveMaterialData({
+    projectId: userInfo.projectId,
+  }).then((res: any) => {
+    alarmList.value = res.data || [];
+  });
 
   const onChange = (current: number) => {
     console.log(current);
@@ -24,17 +23,17 @@
           show-index
           :headers="[
             {
-              key: 'content',
+              key: 'materialName',
               title: '材料名称',
               style: {},
             },
             {
-              key: 'date',
+              key: 'specification',
               title: '规格',
               style: {},
             },
             {
-              key: 'num',
+              key: 'weight',
               title: '数量:吨',
               style: {},
             },

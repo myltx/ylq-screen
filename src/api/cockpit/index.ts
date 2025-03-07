@@ -83,3 +83,11 @@ export function getPouringOrderList(data: any) {
     data,
   });
 }
+
+export function receiveMaterialData(data: any) {
+  return OtherAxios({
+    url: ServicePrefixEnum.YLQApi + '/receiveMaterialData',
+    method: RequestEnum.POST,
+    data,
+  });
+}

@@ -26,7 +26,7 @@
     <div class="module">
       <div class="text-center flex items-center justify-center mt-50px"> 进场数量:吨 </div>
       <div class="text-center flex items-center justify-center mt-20px color-#36d8fd font-500">
-        {{ data?.entryQuantity || '' }}
+        {{ data?.deductionWeight || '' }}
       </div>
     </div>
     <div class="module">
@@ -46,7 +46,7 @@
     <div class="module">
       <div class="text-center flex items-center justify-center mt-50px"> 仓料号 </div>
       <div class="text-center flex items-center justify-center mt-20px color-#36d8fd font-500">
-        {{ data?.materialId || '' }}
+        {{ data?.specification || '' }}
       </div>
     </div>
   </div>

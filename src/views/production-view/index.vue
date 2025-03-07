@@ -2,34 +2,6 @@
   import leftChart from './components/leftChart.vue';
   import centerChart from './components/centerChart.vue';
   import rightChart from './components/rightChart.vue';
-  import { getCaculationByStrength } from '@/api/cockpit/index';
-
-  import { getEntryMaterialData } from '@/api/cockpit';
-  import { getUserInfo } from '@/utils';
-  import { useLoadingStore } from '@/stores/loading';
-
-  const { startLoading, endLoading } = useLoadingStore();
-  const userInfo = getUserInfo();
-
-  // Promise.all([getCaculationByStrength({ companyId: userInfo.companyId })]).then((res) => {
-  //   console.log(res);
-  // });
-
-  const detailData = ref({});
-
-  const getData = () => {
-    startLoading();
-    getEntryMaterialData({
-      companyId: userInfo.companyId,
-    }).then((res: any) => {
-      if (res.errcode == 0) {
-        detailData.value = res.data;
-        console.log(detailData.value);
-      }
-    });
-    endLoading();
-  };
-  getData();
 </script>
 <template>
   <div class="flex justify-around">
