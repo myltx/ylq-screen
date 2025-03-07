@@ -19,7 +19,7 @@
 <template>
   <div class="mt-30px flex justify-between">
     <div class="w-900px">
-      <BasicBox title="进场材料">
+      <BasicBox title="进场材料" :height="'336px'">
         <AutoScrollTable
           show-index
           :headers="[

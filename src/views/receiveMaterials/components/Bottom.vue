@@ -10,7 +10,7 @@
   });
 </script>
 <template>
-  <div class="mt-330px flex items-center justify-between">
+  <div class="mt-270px flex items-center justify-between">
     <div class="module">
       <div class="text-center flex items-center justify-center mt-50px"> 车牌号 </div>
       <div class="text-center flex items-center justify-center mt-20px color-#36d8fd font-500">
