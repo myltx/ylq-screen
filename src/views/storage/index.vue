@@ -3,33 +3,10 @@
   import { getUserInfo } from '@/utils';
 
   const allData = ref<any>([]);
-  const data = [
-    {
-      name: '1号',
-      value: 100,
-    },
-    {
-      name: '2号',
-      value: 200,
-    },
-    {
-      name: '3号',
-      value: 300,
-    },
-    {
-      name: '4号',
-      value: 400,
-    },
-    {
-      name: '5号',
-      value: 500,
-    },
-  ];
   const loading = ref(true);
   storageMaterialData({
     companyId: getUserInfo().companyId,
   }).then((res: any) => {
-    console.log(res, 'r');
     allData.value = res.data;
     loading.value = false;
   });
@@ -59,6 +36,8 @@
     line-height: 60px;
     position: relative;
     font-weight: bold;
+    font-size: 24px;
+    font-family: PangMenZhengDao;
     &::before {
       content: '';
       width: 100%;

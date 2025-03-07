@@ -1,6 +1,8 @@
 <template>
   <div class="center-chart">
-    <div class="center-chart-title">生产进度</div>
+    <div class="center-chart-title">
+      <!-- 生产进度 -->
+    </div>
     <div class="center-chart-content mt-10">
       <div class="center-chart-content-item large">
         <div class="center-chart-content-item-title">场站累计产量</div>

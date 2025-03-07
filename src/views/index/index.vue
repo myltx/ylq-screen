@@ -73,6 +73,7 @@
     background-size: 100% 100%;
     z-index: 99;
     color: #fff;
+    font-family: PangMenZhengDao;
     &.active {
       color: rgba(255, 255, 255, 1);
       font-weight: bold;
