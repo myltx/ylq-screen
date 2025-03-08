@@ -12,7 +12,7 @@
   });
 </script>
 <template>
-  <div class="h-900px overflow-y-auto">
+  <div class="h-900px overflow-y-auto box-wwebkit">
     <div
       class="flex justify-center flex-wrap mt-20px"
       v-for="(item, index) in allData"
@@ -52,5 +52,29 @@
   .chart {
     //     background: rgba(45, 103, 175, 29);
     background: linear-gradient(to top, rgba(18, 50, 95, 0.29), rgba(18, 50, 95, 0));
+  }
+
+  /* 修改整个滚动条的大小 */
+  .box-wwebkit::-webkit-scrollbar {
+    width: 5px; /* 垂直滚动条宽度 */
+    height: 5px; /* 水平滚动条高度 */
+  }
+
+  /* 修改滚动条轨道（背景） */
+  .box-wwebkit::-webkit-scrollbar-track {
+    background-color: rgba(78, 164, 255, 0.2); /* 背景颜色 */
+    border-radius: 5px;
+  }
+
+  /* 修改滚动条滑块（滑动的部分） */
+  .box-wwebkit::-webkit-scrollbar-thumb {
+    background-color: #888; /* 滑块颜色 */
+    border-radius: 5px;
+    border: 3px solid rgba(78, 164, 255, 0.2); /* 给滑块加一个边框 */
+  }
+
+  /* 滑块悬停时的样式 */
+  .box-wwebkit::-webkit-scrollbar-thumb:hover {
+    background-color: #555; /* 鼠标悬停时的颜色 */
   }
 </style>

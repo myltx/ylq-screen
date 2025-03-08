@@ -1,17 +1,23 @@
 <script setup lang="ts">
-  import { useLoadingStore } from '@/stores/loading';
-  import { getUserInfo } from '@/utils';
+  // import { useLoadingStore } from '@/stores/loading';
+  import { getUserInfo, removeLocalStorage } from '@/utils';
   import ReceiveMaterials from '../receiveMaterials/index.vue';
   import Storage from '../storage/index.vue';
   import ProductionView from '../production-view/index.vue';
   import Ingredient from '../ingredient/index.vue';
-  const { isLoading } = storeToRefs(useLoadingStore());
+  import { useRouter } from 'vue-router';
+  // const { isLoading } = storeToRefs(useLoadingStore());
   const userInfo = getUserInfo();
   const activeIndex = ref(0);
   console.log(userInfo);
-
+  const router = useRouter();
   const handleNav = (index: number) => {
     activeIndex.value = index;
+  };
+  const loginOut = () => {
+    removeLocalStorage('token');
+    removeLocalStorage('userInfo');
+    router.push('/login');
   };
 </script>
 <template>
@@ -50,7 +56,7 @@
         >
           生产
         </div>
-        <!-- <div class="color-#eee text-20px">退出登录</div> -->
+        <div class="color-#eee text-20px cursor-pointer" @click="loginOut">退出登录</div>
       </div>
     </template>
     <div class="px-[50px] py-[30px] mt-[70px] color-[#fff]">

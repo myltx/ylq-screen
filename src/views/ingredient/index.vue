@@ -61,7 +61,7 @@
       </div>
     </div>
     <div class="list-container overflow-hidden flex-grow-1">
-      <div class="w-100% overflow-auto flex">
+      <div class="w-100% overflow-auto flex tablewebkit">
         <div
           class="w-200px flex-none color-#1EE7FF text-16px text-center"
           v-for="(row, index) in dataList"
@@ -87,5 +87,29 @@
   .list-container {
     -ms-overflow-style: none;
     overflow: -moz-scrollbars-none;
+  }
+
+  /* 修改整个滚动条的大小 */
+  .tablewebkit::-webkit-scrollbar {
+    width: 5px; /* 垂直滚动条宽度 */
+    height: 5px; /* 水平滚动条高度 */
+  }
+
+  /* 修改滚动条轨道（背景） */
+  .tablewebkit::-webkit-scrollbar-track {
+    background-color: rgba(78, 164, 255, 0.2); /* 背景颜色 */
+    border-radius: 5px;
+  }
+
+  /* 修改滚动条滑块（滑动的部分） */
+  .tablewebkit::-webkit-scrollbar-thumb {
+    background-color: #888; /* 滑块颜色 */
+    border-radius: 5px;
+    border: 3px solid rgba(78, 164, 255, 0.2); /* 给滑块加一个边框 */
+  }
+
+  /* 滑块悬停时的样式 */
+  .tablewebkit::-webkit-scrollbar-thumb:hover {
+    background-color: #555; /* 鼠标悬停时的颜色 */
   }
 </style>

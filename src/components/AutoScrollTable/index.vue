@@ -1,3 +1,11 @@
+<!--
+ * @Author: dongpenghu
+ * @Date: 2025-03-05 21:33:42
+ * @LastEditors: dongpenghu
+ * @LastEditTime: 2025-03-08 13:31:17
+ * @Description: 描述
+ * @FilePath: \ylq-screen\src\components\AutoScrollTable\index.vue
+-->
 <script lang="ts" setup>
   import { vue3ScrollSeamless } from 'vue3-scroll-seamless';
   import type { CSSProperties } from 'vue'; // Vue 项目
@@ -180,5 +188,29 @@
   }
   .tbody {
     height: 90%;
+  }
+
+  /* 修改整个滚动条的大小 */
+  .tbody::-webkit-scrollbar {
+    width: 5px; /* 垂直滚动条宽度 */
+    height: 5px; /* 水平滚动条高度 */
+  }
+
+  /* 修改滚动条轨道（背景） */
+  .tbody::-webkit-scrollbar-track {
+    background-color: rgba(78, 164, 255, 0.2); /* 背景颜色 */
+    border-radius: 5px;
+  }
+
+  /* 修改滚动条滑块（滑动的部分） */
+  .tbody::-webkit-scrollbar-thumb {
+    background-color: #888; /* 滑块颜色 */
+    border-radius: 5px;
+    border: 3px solid rgba(78, 164, 255, 0.2); /* 给滑块加一个边框 */
+  }
+
+  /* 滑块悬停时的样式 */
+  .tbody::-webkit-scrollbar-thumb:hover {
+    background-color: #555; /* 鼠标悬停时的颜色 */
   }
 </style>
