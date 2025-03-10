@@ -17,7 +17,7 @@
   const loginOut = () => {
     removeLocalStorage('token');
     removeLocalStorage('userInfo');
-    router.push('/login');
+    router.replace('/login');
   };
 </script>
 <template>
@@ -56,7 +56,13 @@
         >
           生产
         </div>
-        <div class="color-#eee text-20px cursor-pointer" @click="loginOut">退出登录</div>
+        <!-- <div class="color-#eee text-20px cursor-pointer" @click="loginOut">退出登录</div> -->
+        <a-tooltip placement="top">
+          <template #title>
+            <span>退出登录</span>
+          </template>
+          <div class="w-24px h-24px cursor-pointer login-out"> </div>
+        </a-tooltip>
       </div>
     </template>
     <div class="px-[50px] py-[30px] mt-[70px] color-[#fff]">
@@ -88,6 +94,14 @@
     }
     &:hover {
       background: url('@/assets/images/index/nav_active.png') no-repeat;
+      background-size: 100% 100%;
+    }
+  }
+  .login-out {
+    background: url('@/assets/images/login/login_out.png') no-repeat;
+    background-size: 100% 100%;
+    &:hover {
+      background: url('@/assets/images/login/login_out_active.png') no-repeat;
       background-size: 100% 100%;
     }
   }
