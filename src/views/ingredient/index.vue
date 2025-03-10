@@ -1,26 +1,29 @@
 <script lang="ts" setup>
   import { getLatestPouringOrder } from '@/api/cockpit';
   import { headersTop, headersMid, headersBot } from './ingredient.data';
-  import { getUserInfo } from '@/utils';
+  import { getUserInfo, setIntervalTimer } from '@/utils';
   const userInfo = getUserInfo();
   const alarmList = ref([]);
   const twoList = ref<any>([]);
 
   const dataList = ref<any>([]);
 
-  getLatestPouringOrder({
-    companyId: userInfo.companyId,
-  }).then((res: any) => {
-    alarmList.value = res.data?.dataList || [];
-    dataList.value = res.data?.dataList || [];
-    twoList.value.push({
-      pouringMethod: res.data?.pouringMethod || '',
-      recipeNumber: res.data?.recipeNumber || '',
-      waterRatio: res.data?.waterRatio || '',
-      slump: res.data?.slump || '',
-      taskQuantity: res.data?.taskQuantity || '',
+  const getData = () => {
+    getLatestPouringOrder({
+      companyId: userInfo.companyId,
+    }).then((res: any) => {
+      alarmList.value = res.data?.dataList || [];
+      dataList.value = res.data?.dataList || [];
+      twoList.value.push({
+        pouringMethod: res.data?.pouringMethod || '',
+        recipeNumber: res.data?.recipeNumber || '',
+        waterRatio: res.data?.waterRatio || '',
+        slump: res.data?.slump || '',
+        taskQuantity: res.data?.taskQuantity || '',
+      });
     });
-  });
+  };
+  setIntervalTimer(getData);
 </script>
 <template>
   <div>

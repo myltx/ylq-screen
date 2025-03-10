@@ -1,15 +1,19 @@
 <script setup lang="ts">
   import { storageMaterialData } from '@/api/cockpit/index';
-  import { getUserInfo } from '@/utils';
+  import { getUserInfo, setIntervalTimer } from '@/utils';
 
   const allData = ref<any>([]);
   const loading = ref(true);
-  storageMaterialData({
-    companyId: getUserInfo().companyId,
-  }).then((res: any) => {
-    allData.value = res.data;
-    loading.value = false;
-  });
+
+  const getData = () => {
+    storageMaterialData({
+      companyId: getUserInfo().companyId,
+    }).then((res: any) => {
+      allData.value = res.data;
+      loading.value = false;
+    });
+  };
+  setIntervalTimer(getData);
 </script>
 <template>
   <div class="h-900px overflow-y-auto box-wwebkit">

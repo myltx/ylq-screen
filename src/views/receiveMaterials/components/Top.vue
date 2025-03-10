@@ -1,15 +1,19 @@
 <script setup lang="ts">
   import { receiveMaterialData } from '@/api/cockpit';
-  import { getUserInfo } from '@/utils';
+  import { getUserInfo, setIntervalTimer } from '@/utils';
   import { LeftCircleOutlined, RightCircleOutlined } from '@ant-design/icons-vue';
 
   const userInfo = getUserInfo();
   const alarmList = ref([]);
-  receiveMaterialData({
-    projectId: userInfo.projectId,
-  }).then((res: any) => {
-    alarmList.value = res.data || [];
-  });
+  const getData = () => {
+    receiveMaterialData({
+      projectId: userInfo.projectId,
+    }).then((res: any) => {
+      alarmList.value = res.data || [];
+    });
+  };
+
+  setIntervalTimer(getData);
 
   const onChange = (current: number) => {
     console.log(current);

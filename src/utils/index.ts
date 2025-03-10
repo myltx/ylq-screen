@@ -68,3 +68,22 @@ export function getFileUrl(url: string): string {
   }
   return `${proxyUrl}${url}`;
 }
+
+// 使用 setInterval 实现 定时器函数 30s 执行一次
+export function setIntervalTimer(fn: Function, time?: number) {
+  let timer: any;
+  // 立即执行一次
+  fn();
+  const run = () => {
+    timer = setInterval(() => {
+      fn();
+    }, time || 30000);
+  };
+  run();
+  onUnmounted(() => {
+    clearInterval(timer);
+  });
+  return () => {
+    clearInterval(timer);
+  };
+}

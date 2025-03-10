@@ -4,7 +4,7 @@
   import SingleColumnChart from '@/components/SingleColumnChart/index.vue';
   import OutputChart from '@/components/OutputChart/index.vue';
   import { getCaculationByStrength, getEnvMonitor, getMaterialNumber } from '@/api/cockpit/index';
-  import { getUserInfo } from '@/utils';
+  import { getUserInfo, setIntervalTimer } from '@/utils';
 
   const userInfo = getUserInfo();
 
@@ -14,31 +14,34 @@
     value: [],
   });
   const instrumentPanelData = ref<any>({});
-  getCaculationByStrength({
-    companyId: userInfo.companyId,
-  }).then((res: any) => {
-    alarmList.value = res.data.map((item: any) => {
-      return {
-        name: item.F_StrengthGrade,
-        value: item.GradeSum,
-        ...item,
+  const getData = () => {
+    getCaculationByStrength({
+      companyId: userInfo.companyId,
+    }).then((res: any) => {
+      alarmList.value = res.data.map((item: any) => {
+        return {
+          name: item.F_StrengthGrade,
+          value: item.GradeSum,
+          ...item,
+        };
+      });
+    });
+    getMaterialNumber({
+      companyId: userInfo.companyId,
+    }).then((res: any) => {
+      SettingOutlined.value = {
+        name: res.data.map((item: any) => item.ClName),
+        value: res.data.map((item: any) => item.ClYL),
       };
     });
-  });
-  getMaterialNumber({
-    companyId: userInfo.companyId,
-  }).then((res: any) => {
-    SettingOutlined.value = {
-      name: res.data.map((item: any) => item.ClName),
-      value: res.data.map((item: any) => item.ClYL),
-    };
-  });
 
-  getEnvMonitor({
-    companyId: userInfo.companyId,
-  }).then((res: any) => {
-    instrumentPanelData.value = res.data;
-  });
+    getEnvMonitor({
+      companyId: userInfo.companyId,
+    }).then((res: any) => {
+      instrumentPanelData.value = res.data;
+    });
+  };
+  setIntervalTimer(getData);
 </script>
 <template>
   <div class="mt-24px flex justify-between">

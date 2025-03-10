@@ -47,18 +47,21 @@
 <script lang="ts" setup>
   import { getMachineProduce, getProduceCaculation } from '@/api/cockpit';
   import MultiplePillars from '@/components/MultiplePillars/index.vue';
-  import { getUserInfo } from '@/utils';
+  import { getUserInfo, setIntervalTimer } from '@/utils';
 
   const userInfo = getUserInfo();
   const detailData = ref<any>({});
   const SettingOutlined = ref<any>([]);
-  // 中间
-  getProduceCaculation({ companyId: userInfo.companyId }).then((res: any) => {
-    detailData.value = res.data;
-  });
-  getMachineProduce({ companyId: userInfo.companyId }).then((res: any) => {
-    SettingOutlined.value = res.data;
-  });
+  const getData = () => {
+    // 中间
+    getProduceCaculation({ companyId: userInfo.companyId }).then((res: any) => {
+      detailData.value = res.data;
+    });
+    getMachineProduce({ companyId: userInfo.companyId }).then((res: any) => {
+      SettingOutlined.value = res.data;
+    });
+  };
+  setIntervalTimer(getData);
 </script>
 
 <style scoped>

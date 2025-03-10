@@ -2,7 +2,7 @@
   import Top from './components/Top.vue';
   import Bottom from './components/Bottom.vue';
   import { getEntryMaterialData } from '@/api/cockpit';
-  import { getUserInfo } from '@/utils';
+  import { getUserInfo, setIntervalTimer } from '@/utils';
   import { useLoadingStore } from '@/stores/loading';
 
   const { startLoading, endLoading } = useLoadingStore();
@@ -22,7 +22,7 @@
     });
     endLoading();
   };
-  getData();
+  setIntervalTimer(getData);
 </script>
 <template>
   <div>

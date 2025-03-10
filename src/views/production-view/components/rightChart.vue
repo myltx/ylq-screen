@@ -1,3 +1,62 @@
+<script lang="ts" setup>
+  import { getLatestPouringOrder, getPouringOrderList } from '@/api/cockpit';
+  import { getUserInfo, setIntervalTimer } from '@/utils';
+
+  const userInfo = getUserInfo();
+  const detailData = ref<any>({});
+  const alarmList = ref([]);
+  const columns = [
+    {
+      key: 'constructionSite',
+      title: '项目名称',
+      style: {
+        flex: 2,
+      },
+      tdStyle: {
+        width: '100%',
+        flex: 2,
+        overflow: 'hidden',
+        textOverflow: 'ellipsis', //文本溢出显示省略号
+        whiteSpace: 'nowrap', //文本不会换行
+      },
+    },
+    {
+      key: 'designGrade',
+      title: '强度等级',
+    },
+    {
+      key: 'taskQuantity',
+      title: '任务方量',
+    },
+    {
+      key: 'produceQuantity',
+      title: '实际方量',
+    },
+    {
+      key: 'jdprocessRate',
+      title: '进度',
+      render(data) {
+        return data.processRate || 0 + '%';
+      },
+    },
+  ];
+
+  const getData = () => {
+    getLatestPouringOrder({
+      companyId: userInfo.companyId,
+    }).then((res) => {
+      detailData.value = res?.data || {};
+    });
+
+    getPouringOrderList({
+      companyId: userInfo.companyId,
+    }).then((res) => {
+      alarmList.value = res?.data || [];
+    });
+  };
+  setIntervalTimer(getData);
+</script>
+
 <template>
   <div>
     <BasicBox title="最新浇筑令">
@@ -44,63 +103,6 @@
     </BasicBox>
   </div>
 </template>
-
-<script lang="ts" setup>
-  import { getLatestPouringOrder, getPouringOrderList } from '@/api/cockpit';
-  import { getUserInfo } from '@/utils';
-
-  const userInfo = getUserInfo();
-  const detailData = ref<any>({});
-  const alarmList = ref([]);
-  const columns = [
-    {
-      key: 'constructionSite',
-      title: '项目名称',
-      style: {
-        flex: 2,
-      },
-      tdStyle: {
-        width: '100%',
-        flex: 2,
-        overflow: 'hidden',
-        textOverflow: 'ellipsis', //文本溢出显示省略号
-        whiteSpace: 'nowrap', //文本不会换行
-      },
-    },
-    {
-      key: 'designGrade',
-      title: '强度等级',
-    },
-    {
-      key: 'taskQuantity',
-      title: '任务方量',
-    },
-    {
-      key: 'produceQuantity',
-      title: '实际方量',
-    },
-    {
-      key: 'jdprocessRate',
-      title: '进度',
-      render(data) {
-        return data.processRate || 0 + '%';
-      },
-    },
-  ];
-
-  getLatestPouringOrder({
-    companyId: userInfo.companyId,
-  }).then((res) => {
-    detailData.value = res?.data || {};
-  });
-
-  getPouringOrderList({
-    companyId: userInfo.companyId,
-  }).then((res) => {
-    alarmList.value = res?.data || [];
-  });
-</script>
-
 <style scoped lang="scss">
   .carousel-bg {
     background: linear-gradient(to top, rgba(17, 52, 100, 0.5), rgba(17, 52, 100, 0));
