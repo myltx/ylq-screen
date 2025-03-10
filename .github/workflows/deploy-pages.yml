@@ -16,10 +16,10 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '20'
-          cache: 'pnpm'
+          cache: 'npm'
 
       - name: Install dependencies
-        run: pnpm ci    # 将 npm ci 改为 npm install
+        run: npm install --force    # 将 npm ci 改为 npm install
 
       - name: Build
         run: npm run build
