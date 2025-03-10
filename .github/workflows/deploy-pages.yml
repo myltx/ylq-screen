@@ -3,11 +3,13 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  # 设置在 main 分支上触发
+      - main
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write    # 添加写入权限
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -19,7 +21,7 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
-        run: npm install --force    # 将 npm ci 改为 npm install
+        run: npm install --force
 
       - name: Build
         run: npm run build
