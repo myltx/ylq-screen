@@ -46,7 +46,7 @@
 <template>
   <div class="mt-24px flex justify-between">
     <div class="w-520px">
-      <BasicBox title="拌合站环境监测">
+      <BasicBox title="混凝土累计生产量">
         <div class="carousel-bg">
           <PieChart
             class="w-full h-245px"
@@ -66,7 +66,7 @@
           />
         </div>
       </BasicBox>
-      <BasicBox title="混凝土累计生产量" :height="'180px'">
+      <BasicBox title="拌合站环境监测" :height="'180px'">
         <div class="carousel-bg h-200px">
           <div class="text-center">{{ instrumentPanelData?.deviceName }}</div>
           <div class="h-80% w-100% flex items-center justify-between relative">
@@ -97,7 +97,7 @@
                   <div> {{ instrumentPanelData?.humidity }} %RH </div>
                 </div>
                 <div class="flex items-center justify-between h-30px">
-                  <div>噪音</div>
+                  <div>噪声</div>
                   <div> {{ instrumentPanelData?.noise }} dB </div>
                 </div>
               </div>

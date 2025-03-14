@@ -12,7 +12,8 @@
     getLatestPouringOrder({
       companyId: userInfo.companyId,
     }).then((res: any) => {
-      alarmList.value = res.data?.dataList || [];
+      twoList.value = [];
+      alarmList.value = [res.data] || [];
       dataList.value = res.data?.dataList || [];
       twoList.value.push({
         pouringMethod: res.data?.pouringMethod || '',
@@ -31,7 +32,7 @@
       class="auto-scroll-table"
       :headers="headersTop"
       :rows="alarmList"
-      :height="360"
+      :height="180"
       :class-options="{
         step: 0.5,
       }"
@@ -66,7 +67,7 @@
     <div class="list-container overflow-hidden flex-grow-1">
       <div class="w-100% overflow-auto flex tablewebkit">
         <div
-          class="w-200px flex-none color-#1EE7FF text-16px text-center"
+          class="flex-none color-#1EE7FF text-16px text-center bottom-td"
           v-for="(row, index) in dataList"
           :key="index"
         >
@@ -81,6 +82,9 @@
   </div>
 </template>
 <style scoped lang="scss">
+  .bottom-td {
+    min-width: 200px;
+  }
   .bgColor {
     background-color: rgba(78, 164, 255, 0.2);
   }

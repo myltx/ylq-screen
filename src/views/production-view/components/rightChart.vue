@@ -1,42 +1,71 @@
 <script lang="ts" setup>
   import { getLatestPouringOrder, getPouringOrderList } from '@/api/cockpit';
   import { getUserInfo, setIntervalTimer } from '@/utils';
+  import { Progress } from 'ant-design-vue';
 
   const userInfo = getUserInfo();
   const detailData = ref<any>({});
   const alarmList = ref([]);
+  const style = {
+    background: '#0a2349',
+    // padding: 0,
+    textAlign: 'center',
+    padding: '10px 6px',
+  };
+  const tdStyle = {
+    margin: '-1px 0',
+    border: '1px solid rgba(255, 255, 255, 0.3)',
+    padding: '10px 6px',
+    wordWrap: 'break-all',
+  };
   const columns = [
     {
       key: 'constructionSite',
       title: '项目名称',
       style: {
         flex: 2,
+        ...style,
       },
       tdStyle: {
         width: '100%',
         flex: 2,
-        overflow: 'hidden',
-        textOverflow: 'ellipsis', //文本溢出显示省略号
-        whiteSpace: 'nowrap', //文本不会换行
+        ...tdStyle,
+        // overflow: 'hidden',
+        // textOverflow: 'ellipsis', //文本溢出显示省略号
+        // whiteSpace: 'nowrap', //文本不会换行
       },
     },
     {
       key: 'designGrade',
       title: '强度等级',
+      style: style,
+      tdStyle,
     },
     {
       key: 'taskQuantity',
       title: '任务方量',
+      style: style,
+      tdStyle,
     },
     {
       key: 'produceQuantity',
       title: '实际方量',
+      style: style,
+      tdStyle,
     },
     {
-      key: 'jdprocessRate',
+      key: 'processRate',
       title: '进度',
-      render(data) {
-        return data.processRate || 0 + '%';
+      style: style,
+      tdStyle,
+      render(data: any) {
+        if (data.processRate) {
+          return h(Progress, {
+            percent: data.processRate,
+          });
+        } else {
+          return data.processRate + '%';
+        }
       },
     },
   ];
@@ -94,7 +123,11 @@
         class="auto-scroll-table"
         :headers="columns"
         :rows="alarmList"
+        border
         height="300px"
+        :thead-style="{
+          color: '#fff',
+        }"
         :class-options="{
           step: 0.5,
         }"

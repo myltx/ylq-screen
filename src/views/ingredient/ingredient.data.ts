@@ -18,20 +18,20 @@ const style: CSSProperties = {
 };
 export const headersTop = ref([
   {
-    key: 'materialName',
-    title: '材料名称',
+    key: 'constructionSite',
+    title: '工程部位',
     style: defaultTdStyle,
     tdStyle,
   },
   {
-    key: 'specification',
-    title: '规格',
+    key: 'pouringDate',
+    title: '浇筑日期',
     style: defaultTdStyle,
     tdStyle,
   },
   {
-    key: 'sjyl',
-    title: '数量：吨',
+    key: 'createDate',
+    title: '创建日期',
     style: defaultTdStyle,
     tdStyle,
   },

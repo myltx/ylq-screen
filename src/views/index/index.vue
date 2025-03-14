@@ -12,6 +12,7 @@
   console.log(userInfo);
   const router = useRouter();
   const handleNav = (index: number) => {
+    console.log(index, 'index');
     activeIndex.value = index;
   };
   const loginOut = () => {
