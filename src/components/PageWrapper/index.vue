@@ -24,7 +24,7 @@
     width="1920"
     height="1080"
     :delay="500"
-    :fullScreen="false"
+    :fullScreen="true"
     :boxStyle="{
       background: '#03050C',
       overflow: isScale ? 'hidden' : 'auto',

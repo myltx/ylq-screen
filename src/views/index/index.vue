@@ -61,7 +61,7 @@
           <template #title>
             <span>退出登录</span>
           </template>
-          <div class="w-24px h-24px cursor-pointer login-out"> </div>
+          <div class="w-24px h-24px cursor-pointer login-out" @click="loginOut"> </div>
         </a-tooltip>
       </div>
     </template>

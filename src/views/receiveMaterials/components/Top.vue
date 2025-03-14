@@ -16,7 +16,7 @@
   setIntervalTimer(getData);
 
   const onChange = (current: number) => {
-    console.log(current);
+    // console.log(current);
   };
 </script>
 <template>
