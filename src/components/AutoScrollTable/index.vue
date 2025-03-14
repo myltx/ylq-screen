@@ -9,6 +9,7 @@
 <script lang="ts" setup>
   import { vue3ScrollSeamless } from 'vue3-scroll-seamless';
   import type { CSSProperties } from 'vue'; // Vue 项目
+
   export interface Headers {
     key: string;
     style: CSSProperties;
@@ -40,6 +41,8 @@
     classOptions: Object;
     showIndex?: boolean;
     theadStyle?: CSSProperties;
+    border?: boolean;
+    minHeight?: number;
   }
   const props = withDefaults(defineProps<Props>(), {
     scrollAuto: true,
@@ -73,22 +76,30 @@
 <template>
   <div
     class="auto-scroll-table"
-    :style="{ height: props.height ? props.height + 'px' : '100%' }"
+    :style="{
+      height: props.height ? props.height + 'px' : '',
+      minHeight: props.minHeight ? props.minHeight + 'px' : '',
+    }"
     ref="tableContainer"
   >
     <div
-      class="w-100% flex thead py-10px px-16px color-#4EA4FF text-20px font-500"
+      class="w-100% flex thead color-#4EA4FF text-20px font-500"
       :style="{
         ...(props.theadStyle ? props.theadStyle : {}),
+        border: props?.border ? ' 1px solid rgba(255, 255, 255, 0.3)' : 'none',
       }"
       v-if="headers.length"
     >
       <div
-        class="flex-1"
-        v-for="th in headers.filter((item) => item.key !== 'id')"
+        class="flex-1 py-10px"
+        v-for="(th, ind) in headers.filter((item) => item.key !== 'id')"
         :key="th?.key"
         :style="{
           ...(th.style ? th?.style : {}),
+          borderRight:
+            ind === headers.length - 1 || !props?.border
+              ? 'none'
+              : '1px solid rgba(255, 255, 255, 0.3)',
         }"
       >
         {{ th?.title }}
@@ -96,18 +107,26 @@
     </div>
     <!-- 这一层是tr -->
     <template v-if="props.rows.length">
-      <div class="tbody" v-if="props.scrollAuto">
+      <div
+        class="tbody b-1px b-solid"
+        style="border: 1px solid rgba(255, 255, 255, 0.3)"
+        v-if="props.scrollAuto"
+      >
         <vue3ScrollSeamless
           class="scroll-wrap"
           :classOptions="defaultClassOption"
           :dataList="props.rows"
         >
           <div
-            class="flex px-16px py-6px tr text-16px"
+            class="flex tr text-16px"
             v-for="(row, index) in props.rows"
             :key="row?.id"
             :style="{
               ...(headers[index]?.trStyle ? headers[index]?.trStyle : {}),
+              borderRight:
+                index === headers.length - 1 || !props?.border
+                  ? 'none'
+                  : '1px solid rgba(255, 255, 255, 0.3)',
             }"
           >
             <div
@@ -120,25 +139,15 @@
               v-for="th in props.headers.filter((item) => item.key !== 'id')"
               :key="th.key"
             >
-              <div
-                :class="row.class"
-                :style="{
-                  ...(row?.style ? row.style : {}),
-                  ...(th?.tdStyle ? th?.tdStyle : {}),
-                }"
-                v-html="th.render(row)"
-                v-if="th.render"
-              ></div>
-              <div
-                :class="row.class"
-                :style="{
-                  ...(row?.style ? row.style : {}),
-                  ...(th?.tdStyle ? th?.tdStyle : {}),
-                }"
-                v-else
-              >
-                {{ row[th?.key] }}</div
-              >
+              <template v-if="th.render">
+                <!-- 处理 vnode 渲染 -->
+                <component v-if="typeof th.render(row) === 'object'" :is="th.render(row)" />
+                <!-- 处理 HTML 字符串 -->
+                <div v-else-if="typeof th.render(row) === 'string'" v-html="th.render(row)"></div>
+              </template>
+              <template v-else>
+                {{ row[th?.key] }}
+              </template>
             </div>
           </div>
         </vue3ScrollSeamless>
@@ -177,9 +186,10 @@
   }
   .td {
     width: 100%;
-    overflow: hidden;
-    text-overflow: ellipsis; //文本溢出显示省略号
-    white-space: nowrap; //文本不会换行
+    word-break: break-all;
+    // overflow: hidden;
+    // text-overflow: ellipsis; //文本溢出显示省略号
+    // white-space: nowrap; //文本不会换行
   }
   .scroll-wrap {
     height: 100%;

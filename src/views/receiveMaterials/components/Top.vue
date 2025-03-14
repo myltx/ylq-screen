@@ -7,7 +7,7 @@
   const alarmList = ref([]);
   const getData = () => {
     receiveMaterialData({
-      projectId: userInfo.projectId,
+      companyId: userInfo.companyId,
     }).then((res: any) => {
       alarmList.value = res.data || [];
     });
