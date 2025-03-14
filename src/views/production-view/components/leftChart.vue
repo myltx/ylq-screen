@@ -46,7 +46,7 @@
 <template>
   <div class="mt-24px flex justify-between">
     <div class="w-520px">
-      <BasicBox title="混凝土累计生产量">
+      <BasicBox title="拌合站环境监测">
         <div class="carousel-bg">
           <PieChart
             class="w-full h-245px"
@@ -95,6 +95,10 @@
                 <div class="flex items-center justify-between h-30px">
                   <div>湿度</div>
                   <div> {{ instrumentPanelData?.humidity }} %RH </div>
+                </div>
+                <div class="flex items-center justify-between h-30px">
+                  <div>噪音</div>
+                  <div> {{ instrumentPanelData?.noise }} dB </div>
                 </div>
               </div>
             </div>

@@ -2,7 +2,7 @@
  * @Author: dongpenghu
  * @Date: 2025-03-05 21:33:42
  * @LastEditors: dongpenghu
- * @LastEditTime: 2025-03-08 13:31:17
+ * @LastEditTime: 2025-03-14 14:27:53
  * @Description: 描述
  * @FilePath: \ylq-screen\src\components\AutoScrollTable\index.vue
 -->
@@ -77,7 +77,7 @@
     ref="tableContainer"
   >
     <div
-      class="w-100% flex thead py-10px px-16px color-#4EA4FF text-20px font-500"
+      class="w-100% flex thead py-10px px-16px color-#4EA4FF text-20px font-500 text-center"
       :style="{
         ...(props.theadStyle ? props.theadStyle : {}),
       }"
@@ -120,25 +120,30 @@
               v-for="th in props.headers.filter((item) => item.key !== 'id')"
               :key="th.key"
             >
-              <div
-                :class="row.class"
-                :style="{
-                  ...(row?.style ? row.style : {}),
-                  ...(th?.tdStyle ? th?.tdStyle : {}),
-                }"
-                v-html="th.render(row)"
-                v-if="th.render"
-              ></div>
-              <div
-                :class="row.class"
-                :style="{
-                  ...(row?.style ? row.style : {}),
-                  ...(th?.tdStyle ? th?.tdStyle : {}),
-                }"
-                v-else
-              >
-                {{ row[th?.key] }}</div
-              >
+              <div v-if="th.key === 'jdprocessRate'" style="width: 100%">
+                <a-progress :percent="row.processRate || 0" stroke-linecap="square" />
+              </div>
+              <div v-else>
+                <div
+                  :class="row.class"
+                  :style="{
+                    ...(row?.style ? row.style : {}),
+                    ...(th?.tdStyle ? th?.tdStyle : {}),
+                  }"
+                  v-html="th.render(row)"
+                  v-if="th.render"
+                ></div>
+                <div
+                  :class="row.class"
+                  :style="{
+                    ...(row?.style ? row.style : {}),
+                    ...(th?.tdStyle ? th?.tdStyle : {}),
+                  }"
+                  v-else
+                >
+                  {{ row[th?.key] }}</div
+                >
+              </div>
             </div>
           </div>
         </vue3ScrollSeamless>
