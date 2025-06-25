@@ -1,4 +1,4 @@
-const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["assets/index-BOnfoXa0.js","assets/index-Brs4jXYe.js","assets/index-DHsRwr9D.css","assets/index-C8VBSKqX.js","assets/index-sdjVFoxf.css"])))=>i.map(i=>d[i]);
+const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["assets/index-DFFm_zwV.js","assets/index-bE7LrBEW.js","assets/index-DHsRwr9D.css","assets/index-BmH-c6Jl.js","assets/index-DIJ3roas.css"])))=>i.map(i=>d[i]);
 let kn, Tn, Wm, to, vf, Gm, je, qm, fg, Ru, gu, Nm, be, zm, Km, mf, Du, Wa, _f, xn, Lm, Im, ks, Pm, Jm, Vm, du, dg, Js, Ym, Mn, Ne, Mr, Am, $m, Hm, km, Rm, Aa, Um, Ea, Ca, Em, Zm, Ln, Le, en, Te, _e, Dn, $l, Ke, Et, Mm, Fm, jm, Zt, Tr, Xn, Pu, it, au, oe, ke, Dm, Ee, Bm, fr, wu;
 let __tla = (async ()=>{
     (function() {
@@ -7633,12 +7633,12 @@ let __tla = (async ()=>{
         {
             path: "/login",
             name: "Login",
-            component: ()=>ki(()=>import("./index-BOnfoXa0.js"), __vite__mapDeps([0,1,2]))
+            component: ()=>ki(()=>import("./index-DFFm_zwV.js"), __vite__mapDeps([0,1,2]))
         },
         {
             path: "/index",
             name: "Index",
-            component: ()=>ki(()=>import("./index-C8VBSKqX.js"), __vite__mapDeps([3,1,4]))
+            component: ()=>ki(()=>import("./index-BmH-c6Jl.js"), __vite__mapDeps([3,1,4]))
         }
     ], bo = gm({
         history: Kg("/ylq-screen/"),
