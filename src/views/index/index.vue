@@ -25,17 +25,17 @@
   <PageWrapper :title="userInfo?.companyName">
     <template #header-left>
       <div class="flex items-center justify-between w-[80%] mt-[28px]">
+         <!-- @click="handleNav(0)" -->
         <div
           class="nav w-[181px] h-[52px]"
           :class="{ active: activeIndex === 0 }"
-          @click="handleNav(0)"
         >
           收料
         </div>
+          <!-- @click="handleNav(1)" -->
         <div
           class="nav w-[181px] h-[52px]"
           :class="{ active: activeIndex === 1 }"
-          @click="handleNav(1)"
         >
           仓储
         </div>
